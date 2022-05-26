@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/DateInput.css";
 
-export default function DateInput({ setFromDate, setToDate, convertCurrency }) {
+export default function DateInput({ setFromDate, setToDate, store }) {
   var fromDate = new Date();
   var toDate = new Date();
 
@@ -16,16 +16,12 @@ export default function DateInput({ setFromDate, setToDate, convertCurrency }) {
     setToDate(toDate);
   }
 
-  const exchangeRate = () => {
-    convertCurrency("EUR", "USD");
-    convertCurrency("USD", "GBP");
-  };
 
   return (
     <div className="card col-md-10 mx-auto">
       <input type="date" className="col-md-6 mx-auto my-3" name="date1" id="date1" onChange={() => setSecondDate()}/>
       <input type="date" className="col-md-6 mx-auto" name="date2" id="date2" disabled/>
-      <button className="btn btn-primary col-md-3 mx-auto my-3" onClick={() => exchangeRate()}>Submit</button>
+      <button className="btn btn-primary col-md-3 mx-auto my-3" onClick={() => store()}>Submit</button>
     </div>
   );
 }

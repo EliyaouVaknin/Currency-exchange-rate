@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./Components/Header";
 import DateInput from "./Components/DateInput";
@@ -6,12 +6,12 @@ import Chart from "./Components/Chart";
 import axios from "axios";
 
 function App() {
-  const [weekDataEUR_USD, setWeekDataEUR_USD] = useState([]);
-  const [weekDataUSD_GBP, setWeekDataUSD_GBP] = useState([]);
-  const [weekDaysName, setWeekDaysName] = useState([]);
+  const [weekDataEUR_USD, setWeekDataEUR_USD] = useState("aaaa");
+  const [weekDataUSD_GBP, setWeekDataUSD_GBP] = useState("aaaa");
+  const [weekDaysName, setWeekDaysName] = useState("aaaa");
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
-  const apiKey = "e6d56476b9a191585468";
+  const apiKey = "81729ac1078ca03ea10f";
 
   const convertCurrency = async (fromCurrency, toCurrency) => {
     fromCurrency = encodeURIComponent(fromCurrency);
@@ -31,15 +31,25 @@ function App() {
         }
       });
 
-      await axios.post('localhost:3001/',{
-        weekDataEUR_USD: weekDataEUR_USD,
-        weekDataUSD_GBP: weekDataUSD_GBP,
-        weekDaysName: weekDaysName
-      })
-      .then(res => console.log(res))
-      .catch(error => console.log(error))
-
   };
+  const store = () => {
+    convertCurrency("EUR", "USD");
+    convertCurrency("USD", "GBP");
+
+    axios.post('http://localhost:3001/',{
+      weekDataEUR_USD: weekDataEUR_USD,
+      weekDataUSD_GBP: weekDataUSD_GBP,
+      weekDaysName: weekDaysName
+    })
+    .then(res => console.log(res))
+    .catch(error => console.log(error))
+  }
+
+useEffect(() => {
+
+}, [weekDataEUR_USD, weekDataUSD_GBP, weekDaysName])
+
+
 
   return (
     <div className="App">
@@ -47,7 +57,7 @@ function App() {
       <DateInput
         setFromDate={setFromDate}
         setToDate={setToDate}
-        convertCurrency={convertCurrency}
+        store = {store}
       />
       <Chart
         weekDataEUR_USD={weekDataEUR_USD}
