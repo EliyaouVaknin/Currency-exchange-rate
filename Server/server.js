@@ -40,3 +40,7 @@ app.post('/', async (req, res) => {
   await myData.save()
   res.json(myData)
 })
+
+app.delete('/', async (req, res) => {
+  Currency.deleteMany({})
+})

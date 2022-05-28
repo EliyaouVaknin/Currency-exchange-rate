@@ -41,6 +41,7 @@ function App () {
         }
       })
   }
+
   const store = () => {
     axios
       .post('http://localhost:3001/', {
@@ -51,6 +52,11 @@ function App () {
       .then(res => console.log(res))
       .catch(error => console.log(error))
   }
+
+  const deleteFunction = async () => {
+    await axios.delete('http://localhost:3001/');
+  }
+
 
   return (
     <div className='App'>
@@ -73,7 +79,7 @@ function App () {
               />
             }
           />
-          <Route path='/history' element={<History />} />
+          <Route path='/history' element={<History deleteFunction={deleteFunction}/>} />
         </Routes>
       </Router>
     </div>

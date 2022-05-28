@@ -16,7 +16,9 @@ export default function Chart ({
   weekDataEUR_USD,
   weekDataUSD_GBP,
   weekDaysName,
-  store
+  store,
+  deleteFunction,
+  index
 }) {
   ChartJS.register(
     CategoryScale,
@@ -27,7 +29,7 @@ export default function Chart ({
     Tooltip,
     Legend
   )
-  console.log(window.location.pathname == '/')
+
   return (
     <div className='ChartContainer container card'>
       <div className='row'>
