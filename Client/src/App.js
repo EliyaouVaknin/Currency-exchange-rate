@@ -54,9 +54,8 @@ function App () {
   }
 
   const deleteFunction = async () => {
-    await axios.delete('http://localhost:3001/');
+    await axios.delete('http://localhost:3001/')
   }
-
 
   return (
     <div className='App'>
@@ -79,7 +78,10 @@ function App () {
               />
             }
           />
-          <Route path='/history' element={<History deleteFunction={deleteFunction}/>} />
+          <Route
+            path='/history'
+            element={<History deleteFunction={deleteFunction} />}
+          />
         </Routes>
       </Router>
     </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Chart from './Chart'
 import axios from 'axios'
 
-export default function History ({deleteFunction}) {
+export default function History ({ deleteFunction }) {
   const [database, setDatabase] = useState([])
   useEffect(() => {
     axios.get('http://localhost:3001/').then(res => setDatabase(res.data))
@@ -11,8 +11,9 @@ export default function History ({deleteFunction}) {
 
   return (
     <>
-      {window.location.pathname == '/history' && (
-        <Link to="/"
+      {window.location.pathname == '/history' && database.length > 0 && (
+        <Link
+          to='/'
           className='btn btn-primary my-3 col-md-3 mx-auto'
           onClick={() => deleteFunction()}
         >

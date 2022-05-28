@@ -21,7 +21,8 @@ export default function DateInput ({
   }
 
   return (
-    <div className='card col-md-10 mx-auto'>
+    <div className='card col-md-6 mx-auto'>
+      <h2>Search</h2>
       <input
         type='date'
         className='col-md-6 mx-auto my-3'

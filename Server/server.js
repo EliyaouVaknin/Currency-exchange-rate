@@ -42,5 +42,5 @@ app.post('/', async (req, res) => {
 })
 
 app.delete('/', async (req, res) => {
-  Currency.deleteMany({})
+  Currency.deleteMany({}).then(console.log('Deleted successfully'))
 })
