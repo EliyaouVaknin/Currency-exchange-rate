@@ -19,9 +19,9 @@ db.on('error', console.error.bind(console, 'connection error: '))
 db.once('open', () => console.log('MongoDB Connected'))
 
 const CurrencySchema = mongoose.Schema({
-  weekDataEUR_USD: String,
-  weekDataUSD_GBP: String,
-  weekDaysName: String
+  weekDataEUR_USD: Array,
+  weekDataUSD_GBP: Array,
+  weekDaysName: Array
 })
 
 const Currency = mongoose.model('Currency', CurrencySchema)
