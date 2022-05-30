@@ -13,12 +13,8 @@ export default function Header () {
           <h2>Exchange rate application</h2>
         </div>
         <div className='col-md-4'>
-          <Link to='/history' className='btn btn-primary mx-3 my-3'>
-            View History
-          </Link>
-          <Link to='/' className='btn btn-primary my-3'>
-            Home
-          </Link>
+          <Link to='/history' className='btn btn-primary mx-3 my-3'> View History </Link>
+          <Link to='/' className='btn btn-primary my-3'> Home </Link>
         </div>
       </div>
     </div>

@@ -1,25 +1,10 @@
 import React from 'react'
 import { Line } from 'react-chartjs-2'
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-} from 'chart.js'
+import {Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend} from 'chart.js'
 import '../Styles/Chart.css'
 
-export default function Chart ({
-  weekDataEUR_USD,
-  weekDataUSD_GBP,
-  weekDaysName,
-  store,
-  deleteFunction,
-  index
-}) {
+export default function Chart ({weekDataEUR_USD, weekDataUSD_GBP, weekDaysName, store}) {
+
   ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -84,12 +69,7 @@ export default function Chart ({
           />
         </div>
         {window.location.pathname == '/' && (
-          <button
-            className='btn btn-primary my-3 col-md-3 mx-auto'
-            onClick={() => store()}
-          >
-            Save
-          </button>
+          <button className='btn btn-primary my-3 col-md-3 mx-auto' onClick={() => store()}>Save</button>
         )}
       </div>
     </div>
